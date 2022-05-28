@@ -1,0 +1,32 @@
+{
+    "name": "chrome-extention-react",
+    "description": "my extention",
+    "version": "0.1",
+    "manifest_version": 3,
+    "icons": {
+        "128": "icon.png"
+    },  
+    "host_permissions": [
+        "https://www.google.com/"
+    ],
+    "permissions": [ 
+        "activeTab", 
+        "scripting", 
+        "storage",
+        "declarativeNetRequest",
+        "declarativeNetRequestFeedback",
+        "cookies"
+    ],
+    "action": {
+      "default_icon": "icon.png"
+    },
+    "background": {
+        "service_worker": "background.js"
+    },
+    "content_scripts": [{
+        "matches": [ "https://www.google.com/" ],
+        "js": [ "Content.js" ],
+        "css": [ "global-style.css" ],
+        "run_at": "document_end"
+    }]
+}
